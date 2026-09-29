@@ -1,0 +1,90 @@
+{
+  "package": "obix-core-scheduler",
+  "dir": "core/obix-core-scheduler",
+  "importedBy": "scripts/recovery/import-packages.mjs",
+  "snapshot": "snap-20260924T142414Z",
+  "stage": "stage-2 lift-and-shift (base owner; later stages repair/merge)",
+  "sources": [
+    {
+      "label": "upstream:obix-core-scheduler@ce31eea",
+      "repo": "obix-core-scheduler",
+      "url": "https://github.com/obinexusmk2/obix-core-scheduler",
+      "sha": "ce31eea3278818740fba17349c6d136fab5d681c",
+      "path": ".",
+      "license": "MIT",
+      "licenseFileUpstream": true,
+      "filesImported": 9,
+      "filesExcluded": 11
+    },
+    {
+      "label": "upstream:obix-monorepo-2026@4e5295a",
+      "repo": "obix-monorepo-2026",
+      "sha": "4e5295a09e3799f5490e1d655e15ab4bf865fbf7",
+      "path": "packages/obix-effects",
+      "into": "effects",
+      "url": "https://github.com/obinexusmk2/obix-monorepo-2026",
+      "mergedInto": "src/effects/"
+    }
+  ],
+  "originalManifest": {
+    "name": "@obinexusltd/obix-core-scheduler",
+    "version": "0.1.0",
+    "license": "MIT",
+    "bin": null,
+    "scripts": {
+      "build": "tsc -p tsconfig.json",
+      "test": "node --test \"test/*.test.mjs\"",
+      "prepublishOnly": "npm run build"
+    }
+  },
+  "transforms": [
+    "package.json regenerated (lockstep version, exact internal pins, exports with \"types\" first, standard scripts)",
+    "tsconfig.json generated (NodeNext via tsconfig.base.json; @types/node enabled)",
+    "internal specifiers renamed: obix-spec×2→@obinexusltd/obix-core-spec",
+    "relative imports given \".js\"/\"/index.js\" extensions: 0",
+    "dependencies added: @obinexusltd/obix-core-spec (imported by src but undeclared)"
+  ],
+  "localFixes": [
+    {
+      "stage": "stage-3",
+      "files": [
+        "src/effects/index.ts",
+        "src/effects/clock.ts",
+        "test/effects-equivalence.test.mjs"
+      ],
+      "why": "KD-04: the Level-0 effects layer (./effects) is now a thin layer over the canonical scheduler and clocks of this package instead of a second, separate timer implementation. Public names and semantics of ./effects are unchanged; 500 seeded random schedules are checked against a test-only transcription of the previous implementation."
+    }
+  ],
+  "scopeScrub": {
+    "rule": "scripts/recovery/scrub-rules.mjs (brief: no other OBINexus projects)",
+    "replacementsPerFile": {}
+  },
+  "authoredOverlay": [],
+  "excluded": [
+    "dist/**",
+    "node_modules/**",
+    "lockfiles",
+    "tsconfig*.json (regenerated)",
+    ".gitignore",
+    ".github/**",
+    "coverage/**"
+  ],
+  "unresolvedRelativeImports": [],
+  "note": "Level-0 obix-effects (createScheduler(clock).every/start/stopAll, evaluateWhile, VirtualClock.clock) is carried faithfully under ./effects because binding-reactive and compiler-equivalence need it. OBLIGATION (Stage 3): re-implement ./effects as a thin layer over the canonical scheduler — the two `createScheduler`/`VirtualClock` shapes must not remain duplicate runtime implementations.",
+  "renamedFrom": [
+    {
+      "name": "@obinexusltd/obix-core-scheduler",
+      "dir": "core/obix-core-scheduler",
+      "stage": "unscoped-naming",
+      "why": "D-102 (2026-09-29): OBIX packages are named without an npm scope — previous name @obinexusltd/obix-core-scheduler, current name obix-core-scheduler (docs/recovery/unscoped-migration.md); the directory, version and exports are unchanged"
+    }
+  ],
+  "export": {
+    "from": "https://github.com/obinexusmk2/obix-monorepo",
+    "branch": "recovery/obix-api-preserving-rebuild",
+    "commit": "69cafc94910c1add865a520877617ac307668875",
+    "directory": "core/obix-core-scheduler",
+    "exportedBy": "scripts/release/export-repos.mjs",
+    "note": "a clean initial commit of this package; the monorepo history is not imported (D-103). Local machine paths in this record are replaced by <local workspace>."
+  }
+}
