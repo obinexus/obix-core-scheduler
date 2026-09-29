@@ -1,7 +1,7 @@
 /**
  * The effects layer was re-implemented on the canonical scheduler (KD-04: one timer implementation, not two).
  * This suite keeps the OLD implementation as a test-only reference model (a transcription of Level-0 `obix-effects`
- * @ obix-monorepo-2026@4e5295a, `packages/obix-effects/src/{index,clock}.ts`) and checks, on seeded random schedules, that the
+ * @ obix-monorepo-2026@4e5295a, `packages/obix-effects/src/{index,clock}.ts` — a historical source) and checks, on seeded random schedules, that the
  * new layer produces the same tick log, the same active/registered counts and the same clock time after every step.
  */
 import test from "node:test";

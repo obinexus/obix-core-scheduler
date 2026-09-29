@@ -30,7 +30,8 @@
     "README.md",
     "LICENSE",
     "test",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "PROVENANCE.json"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",

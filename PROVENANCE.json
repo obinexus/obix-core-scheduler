@@ -82,7 +82,7 @@
   "export": {
     "from": "https://github.com/obinexusmk2/obix-monorepo",
     "branch": "recovery/obix-api-preserving-rebuild",
-    "commit": "69cafc94910c1add865a520877617ac307668875",
+    "commit": "31a7db10a098654cd4cf2e26cbd293b01f36f7ec",
     "directory": "core/obix-core-scheduler",
     "exportedBy": "scripts/release/export-repos.mjs",
     "note": "a clean initial commit of this package; the monorepo history is not imported (D-103). Local machine paths in this record are replaced by <local workspace>."
